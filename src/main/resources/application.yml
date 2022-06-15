@@ -5,3 +5,12 @@ netty:
   default:
     allocator:
       max-order: 3
+
+datasources:
+  default:
+    url: jdbc:h2:mem:youthRanking
+    driverClassName: org.h2.Driver
+    username: admin
+    password: admin
+    schema-generate: CREATE_DROP
+    dialect: H2
