@@ -1,0 +1,31 @@
+plugins {
+    id 'groovy'
+}
+
+version = "0.1"
+group = "com.tjay.youthRanking"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("18")
+    targetCompatibility = JavaVersion.toVersion("18")
+}
+
+graalvmNative.toolchainDetection = false
+
+wrapper {
+    gradleVersion = '7.4.2'
+}
