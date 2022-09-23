@@ -1,5 +1,10 @@
 plugins {
-    id 'groovy'
+    id 'base'
+    id 'java'
+}
+
+allprojects {
+    apply plugin: 'base'
 }
 
 version = "0.1"
@@ -23,8 +28,6 @@ java {
     sourceCompatibility = JavaVersion.toVersion("18")
     targetCompatibility = JavaVersion.toVersion("18")
 }
-
-graalvmNative.toolchainDetection = false
 
 wrapper {
     gradleVersion = '7.4.2'

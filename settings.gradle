@@ -1,1 +1,3 @@
 rootProject.name="youthRanking"
+
+include 'frontend'

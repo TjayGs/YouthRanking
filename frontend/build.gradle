@@ -1,0 +1,15 @@
+plugins {
+    id 'com.github.node-gradle.node' version '3.4.0'
+}
+
+node {
+    download = true
+    version = '16.14.0'
+    yarnVersion = '1.22.19'
+}
+
+task yarnStart(type: YarnTask) {
+    yarnCommand = ['start']
+}
+
+build.dependsOn yarn
