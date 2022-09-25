@@ -12,7 +12,7 @@ export const CreatePlayerForm: FC = () => {
                                 <div className="field">
                                     <label className="label">Vorname</label>
                                     <div className="control">
-                                        <input type="email" className="input" placeholder="Vorname" />
+                                        <input type="text" className="input" placeholder="Vorname" />
                                     </div>
                                 </div>
                                 <div className="field">
