@@ -1,12 +1,18 @@
+import { useState } from 'react';
 import './App.css';
+import { CreatePlayerForm } from './CreatePlayerForm';
+import { CreateSingleGameForm } from './CreateSingleGameForm';
 import { HeaderComponent } from './Header';
 
-function App() {
+
+export function App() {
+  const [ showPage, setShowPage ] = useState('home')
   return (
-    <div className="App">
-      <HeaderComponent/>
-    </div >
+    <div>
+      <HeaderComponent setShowPage={setShowPage} />
+      {showPage === 'home' && <div/> }
+      {showPage === 'createPlayer' && <CreatePlayerForm/>}
+      {showPage === 'createSingleGame' && <CreateSingleGameForm/> }
+    </div>
   );
 }
-
-export default App;
