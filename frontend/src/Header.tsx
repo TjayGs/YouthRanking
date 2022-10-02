@@ -32,6 +32,10 @@ export const HeaderComponent: FC<HeaderComponentProps> = (props: HeaderComponent
             <a className='navbar-item' onClick={() => setShowPage(Pages.CREATE_DOUBLE_GAME)}>
               Erstelle Doppel
             </a>
+
+            <a className='navbar-item' onClick={() => setShowPage(Pages.HELP_FAQ)}>
+              Hilfe
+            </a>
           </div>
         </div>
         <div className="navbar-end">
