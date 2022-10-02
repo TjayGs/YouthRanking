@@ -1,5 +1,6 @@
-package com.tjay.youthranking.game;
+package com.tjay.youthranking.game.singlegame;
 
+import com.tjay.youthranking.game.Game;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

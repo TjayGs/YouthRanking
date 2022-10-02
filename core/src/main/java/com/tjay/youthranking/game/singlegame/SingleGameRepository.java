@@ -1,4 +1,4 @@
-package com.tjay.youthranking.game;
+package com.tjay.youthranking.game.singlegame;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.time.LocalDate;

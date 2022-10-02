@@ -1,4 +1,4 @@
-package com.tjay.youthranking.game;
+package com.tjay.youthranking.game.singlegame;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class SingleGameController {
     @GET
     @Path("/{id}")
     @Produces(APPLICATION_JSON)
-    public Response getPlayerById(@PathParam("id") String id) {
+    public Response getSingleGameById(@PathParam("id") String id) {
         Optional<SingleGame> singleGameOptional = singleGameRepository.findSingleGameById(id);
         if (singleGameOptional.isPresent()) {
             log.info("Returning SingleGame {} for id {}", singleGameOptional.get(), id);
