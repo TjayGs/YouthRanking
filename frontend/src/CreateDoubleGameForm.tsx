@@ -1,20 +1,28 @@
 import { FC } from "react";
 
-export const CreateSingleGameForm: FC = () => {
+export const CreateDoubleGameForm: FC = () => {
     return (
         <div className="middle-tile">
             <div className="field has-text-centered">
-                <h1 className="title">Erstelle Einzel</h1>
+                <h1 className="title">Erstelle Doppel</h1>
             </div>
             <div className="columns is-centered">
-                <div className="column is-6">
+                <div className="column is-8">
                     <form className="box">
                         <div className="columns is-centered">
                             <div className="column is-4">
                                 <div className="field">
-                                    <label className="label">Spieler 1</label>
+                                    <label className="label">Team 1 Spieler 1</label>
                                     <div className="control">
-                                        <input type="text" className="input" placeholder="Spieler 1" />
+                                        <input type="text" className="input" placeholder="Spieler" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="column is-4">
+                                <div className="field">
+                                    <label className="label">Team 1 Spieler 2</label>
+                                    <div className="control">
+                                        <input type="text" className="input" placeholder="Spieler" />
                                     </div>
                                 </div>
                             </div>
@@ -41,9 +49,17 @@ export const CreateSingleGameForm: FC = () => {
                         <div className="columns is-centered">
                             <div className="column is-4">
                                 <div className="field">
-                                    <label className="label">Spieler 2</label>
+                                    <label className="label">Team 2 Spieler 1 </label>
                                     <div className="control">
-                                        <input type="text" className="input" placeholder="Spieler 1" />
+                                        <input type="text" className="input" placeholder="Spieler" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="column is-4">
+                                <div className="field">
+                                    <label className="label">Team 2 Spieler 2</label>
+                                    <div className="control">
+                                        <input type="text" className="input" placeholder="Spieler" />
                                     </div>
                                 </div>
                             </div>

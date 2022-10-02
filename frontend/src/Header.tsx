@@ -1,7 +1,8 @@
 import { FC } from "react"
+import { Pages } from "./constants"
 
 interface HeaderComponentProps {
-  setShowPage: (page: string) => void
+  setShowPage: (page: Pages) => void
 }
 
 export const HeaderComponent: FC<HeaderComponentProps> = (props: HeaderComponentProps) => {
@@ -9,7 +10,7 @@ export const HeaderComponent: FC<HeaderComponentProps> = (props: HeaderComponent
     return (
         <nav className='navbar' role={'navigation'} aria-label='main navigation'>
         <div className='navbar-brand'>
-          <a className="navbar-item" onClick={() => setShowPage('home')}> YouthIntake</a>
+          <a className="navbar-item" onClick={() => setShowPage(Pages.HOME)}> YouthIntake</a>
 
           {/* TODO for what ? */}
           <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -20,15 +21,15 @@ export const HeaderComponent: FC<HeaderComponentProps> = (props: HeaderComponent
         </div>
         <div id="navbar-main" className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item" onClick={() => setShowPage('createPlayer')}>
+            <a className="navbar-item" onClick={() => setShowPage(Pages.CREATE_PLAYER)}>
               Erstelle Spieler
             </a>
 
-            <a className="navbar-item" onClick={() => setShowPage('createSingleGame')}>
+            <a className="navbar-item" onClick={() => setShowPage(Pages.CREATE_SINGLE_GAME)}>
               Erstelle Einzel
             </a>
 
-            <a className='navbar-item'>
+            <a className='navbar-item' onClick={() => setShowPage(Pages.CREATE_DOUBLE_GAME)}>
               Erstelle Doppel
             </a>
           </div>
