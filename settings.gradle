@@ -1,3 +1,12 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        mavenLocal()
+    }
+}
+
 rootProject.name='youthRanking'
 
 include 'frontend'
+include 'core'

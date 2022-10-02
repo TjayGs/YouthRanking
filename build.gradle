@@ -1,32 +1,17 @@
 plugins {
     id 'base'
-    id 'java'
 }
 
 allprojects {
     apply plugin: 'base'
-}
 
-version = '0.2'
-group = 'com.tjay.youthRanking'
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-}
-
-test {
-    useJUnitPlatform()
-}
-
-java {
-    sourceCompatibility = JavaVersion.toVersion('17')
-    targetCompatibility = JavaVersion.toVersion('17')
+    version = '0.2'
+    group = 'com.tjay.youthRanking'
 }
 
 wrapper {
