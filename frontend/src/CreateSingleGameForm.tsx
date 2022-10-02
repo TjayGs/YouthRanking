@@ -21,9 +21,20 @@ export const CreateSingleGameForm: FC = () => {
                             <div className="column is-4">
                                 <div className="field">
                                     <label className="label">Tore</label>
-                                    <div className="control">
-                                        <input type="text" className="input" placeholder="Tore" />
-                                    </div>
+                                    <p className="control">
+                                        <span className="select">
+                                            <select>
+                                                <option selected>0</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                            </select>
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -39,9 +50,20 @@ export const CreateSingleGameForm: FC = () => {
                             <div className="column is-4">
                                 <div className="field">
                                     <label className="label">Tore</label>
-                                    <div className="control">
-                                        <input type="text" className="input" placeholder="Tore" />
-                                    </div>
+                                    <p className="control">
+                                        <span className="select">
+                                            <select>
+                                                <option selected>0</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                            </select>
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
