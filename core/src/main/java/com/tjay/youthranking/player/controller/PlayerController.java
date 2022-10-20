@@ -48,7 +48,10 @@ public class PlayerController {
 
     @POST
     @Produces(APPLICATION_JSON)
+    @Consumes(APPLICATION_JSON)
     public Response createPlayer(Player player) {
+        
+
         Player createdPlayer = playerRepository.createPlayer(player);
         log.info("Created new player {}", player);
         return Response.ok(createdPlayer).build();
