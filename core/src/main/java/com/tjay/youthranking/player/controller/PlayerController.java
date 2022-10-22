@@ -1,16 +1,12 @@
-package com.tjay.youthranking.player;
+package com.tjay.youthranking.player.controller;
 
+import com.tjay.youthranking.player.Player;
+import com.tjay.youthranking.player.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.Optional;
 
@@ -28,15 +24,15 @@ public class PlayerController {
     @PUT
     @Consumes(APPLICATION_JSON)
     public void updatePlayer(Player player) {
-        playerRepository.updatePlayer(player);
-        log.info("Updated Player: " + playerRepository.getPlayerForId(player.getId()).toString());
+        playerRepository.save(player);
+        log.info("Updated Player: " + playerRepository.findById(player.getId()).toString());
     }
 
     @GET
     @Path("/{id}")
     @Produces(APPLICATION_JSON)
     public Response getPlayerById(@PathParam("id") String id) {
-        Optional<Player> playerOptional = playerRepository.getPlayerForId(id);
+        Optional<Player> playerOptional = playerRepository.findById(id);
         if (playerOptional.isPresent()) {
             log.info("Returning player {} for id {}", playerOptional.get(), id);
             return Response.ok(playerOptional.get()).build();
@@ -50,9 +46,7 @@ public class PlayerController {
     @Produces(APPLICATION_JSON)
     @Consumes(APPLICATION_JSON)
     public Response createPlayer(Player player) {
-        
-
-        Player createdPlayer = playerRepository.createPlayer(player);
+        Player createdPlayer = playerRepository.save(player);
         log.info("Created new player {}", player);
         return Response.ok(createdPlayer).build();
     }
