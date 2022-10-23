@@ -1,7 +1,6 @@
-import {FC, useState} from "react";
+import {ChangeEventHandler, FC, useState} from "react";
 import {createPlayer} from "../../api/youth-intake.api";
 import {handleFormSubmit} from "../../utils/form.utils";
-
 
 export const CreatePlayerForm: FC = () => {
     const [foreName, setForeName] = useState('')
@@ -17,15 +16,13 @@ export const CreatePlayerForm: FC = () => {
                         <div className="field">
                             <label className="label">Vorname</label>
                             <div className="control">
-                                <input type="text" className="input" placeholder="Vorname"
-                                       onChange={() => setForeName}/>
+                                <input type="text" className="input" placeholder="Vorname" required onChange={e => setForeName(e.target.value)}/>
                             </div>
                         </div>
                         <div className="field">
                             <label className="label">Nachname</label>
                             <div className="control">
-                                <input type="text" className="input" placeholder="Nachname" required
-                                       onChange={() => setSurName}/>
+                                <input type="text" className="input" placeholder="Nachname" required onChange={e => setSurName(e.target.value)}/>
                             </div>
                         </div>
                         <div className="field has-text-centered">

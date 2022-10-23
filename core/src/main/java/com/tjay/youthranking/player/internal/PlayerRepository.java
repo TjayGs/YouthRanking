@@ -1,6 +1,7 @@
-package com.tjay.youthranking.player;
+package com.tjay.youthranking.player.internal;
 
 
+import com.tjay.youthranking.player.Player;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
