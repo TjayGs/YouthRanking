@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Optional;
 
+import static com.tjay.youthranking.general.ErrorCodeConstants.ERROR_CODE_FORENAME_AND_SURNAME_COMBINATION_NOT_UNIQUE;
 import static com.tjay.youthranking.general.ErrorCodeConstants.ERROR_CODE_FORENAME_OR_SURNAME_MUST_NOT_BE_EMPTY;
 
 /**
@@ -23,8 +24,8 @@ public class PlayerService {
 
 
     /**
-    * Before saving the Player, it will be cleaned up
-    */
+     * Before saving the Player, it will be cleaned up
+     */
     public Player save(Player player) {
         Player cleanedPlayer = cleanUpPlayer(player);
         validatePlayer(player);
@@ -35,13 +36,20 @@ public class PlayerService {
         // foreName or surName must not be empty
         if (player.getForeName().isBlank() || player.getSurName().isBlank()) {
             throw new YouthRatingException("Forename or Surname must not be empty for given player: " + player,
-                                           ERROR_CODE_FORENAME_OR_SURNAME_MUST_NOT_BE_EMPTY);
+                    ERROR_CODE_FORENAME_OR_SURNAME_MUST_NOT_BE_EMPTY);
+        }
+
+        // Combination for ForeName and SurName must not exists already
+        Optional<Player> existingForeNameSurNamePlayer = playerRepository.findPlayerByForeNameAndSurName(player.getForeName().trim(), player.getSurName().trim());
+        if (existingForeNameSurNamePlayer.isPresent()) {
+            throw new YouthRatingException("There is already a player with the same forename and surname: " + existingForeNameSurNamePlayer.get(),
+                                           ERROR_CODE_FORENAME_AND_SURNAME_COMBINATION_NOT_UNIQUE);
         }
     }
 
     /**
      * Method will cleanUp the given Player entity and return the cleaned up one.
-     *
+     * <p>
      * Cleaning up means things like trimming names for example
      */
     private Player cleanUpPlayer(Player dirtyPlayer) {

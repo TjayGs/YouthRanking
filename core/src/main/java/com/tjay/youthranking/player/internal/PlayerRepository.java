@@ -10,6 +10,8 @@ public interface PlayerRepository extends CrudRepository<Player, String> {
     @Override
     Optional<Player> findById(String uuid);
 
+    Optional<Player> findPlayerByForeNameAndSurName(String foreName, String surName);
+
     @Override
     Player save(Player entity);
 }
