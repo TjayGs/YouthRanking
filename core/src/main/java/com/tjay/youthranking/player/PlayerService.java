@@ -1,5 +1,6 @@
 package com.tjay.youthranking.player;
 
+import com.tjay.youthranking.general.YouthRatingException;
 import com.tjay.youthranking.player.internal.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 

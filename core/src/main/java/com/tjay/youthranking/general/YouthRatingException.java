@@ -1,4 +1,4 @@
-package com.tjay.youthranking.player;
+package com.tjay.youthranking.general;
 
 import lombok.Getter;
 
