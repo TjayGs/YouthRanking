@@ -17,4 +17,21 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet author="Tjay" id="create-initial-singlegame-table">
+        <createTable tableName="SINGLEGAME">
+            <column name="ID" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="blueTeamPlayerId" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="redTeamPlayerId" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        <column name="blueTeamGoals" type="INTEGER"/>
+        <column name="redTeamGoals" type="INTEGER"/>
+        <column name="playedAt" type="DATE"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

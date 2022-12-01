@@ -21,12 +21,12 @@ import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 @Path("/singleGames")
 public class SingleGameController {
 
-    private final SingleGameRepository singleGameRepository;
+    private final SingleGameService singleGameService;
 
     @POST
     @Produces(APPLICATION_JSON)
     public Response createSingleGame(SingleGame singleGame) {
-        SingleGame createdSingleGame = singleGameRepository.createSingleGame(singleGame);
+        SingleGame createdSingleGame = singleGameService.saveSingleGame(singleGame);
         log.info("Created new SingleGame {}", createdSingleGame);
         return Response.ok(createdSingleGame).build();
     }
@@ -35,7 +35,7 @@ public class SingleGameController {
     @Path("/{id}")
     @Produces(APPLICATION_JSON)
     public Response getSingleGameById(@PathParam("id") String id) {
-        Optional<SingleGame> singleGameOptional = singleGameRepository.findSingleGameById(id);
+        Optional<SingleGame> singleGameOptional = singleGameService.findSingleGameById(id);
         if (singleGameOptional.isPresent()) {
             log.info("Returning SingleGame {} for id {}", singleGameOptional.get(), id);
             return Response.ok(singleGameOptional.get()).build();

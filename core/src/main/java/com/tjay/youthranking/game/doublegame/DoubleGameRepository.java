@@ -17,8 +17,8 @@ public class DoubleGameRepository {
         String doubleGameId = "DoubleGame-" + UUID.randomUUID();
         DoubleGame doubleGameToPersist = DoubleGame.builder()
                 .id(doubleGameId)
-                .redGoals(incomingDoubleGame.getRedGoals())
-                .blueGoals(incomingDoubleGame.getBlueGoals())
+                .redTeamGoals(incomingDoubleGame.getRedTeamGoals())
+                .blueTeamGoals(incomingDoubleGame.getBlueTeamGoals())
                 .playedAt(LocalDate.now())
                 .redTeamPlayerIdOne(incomingDoubleGame.getRedTeamPlayerIdOne())
                 .redTeamPlayerIdTwo(incomingDoubleGame.getRedTeamPlayerIdTwo())
