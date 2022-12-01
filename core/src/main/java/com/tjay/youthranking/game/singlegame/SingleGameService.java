@@ -44,11 +44,11 @@ public class SingleGameService {
             return;
         }
 
-        if (singleGame.getRedTeamGoals() == 7 && 0 < singleGame.getBlueTeamGoals() && 6 > singleGame.getBlueTeamGoals()) {
+        if (singleGame.getRedTeamGoals() == 7 && 0 <= singleGame.getBlueTeamGoals() && 6 > singleGame.getBlueTeamGoals()) {
             return;
         }
 
-        if (singleGame.getBlueTeamGoals() == 7 && 0 < singleGame.getRedTeamGoals() && 6 > singleGame.getRedTeamGoals()) {
+        if (singleGame.getBlueTeamGoals() == 7 && 0 <= singleGame.getRedTeamGoals() && 6 > singleGame.getRedTeamGoals()) {
             return;
         }
 
