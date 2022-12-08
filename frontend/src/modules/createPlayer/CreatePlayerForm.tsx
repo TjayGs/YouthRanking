@@ -1,4 +1,4 @@
-import {ChangeEventHandler, FC, useState} from "react";
+import {FC, useState} from "react";
 import {createPlayer} from "../../api/youth-intake.api";
 import {handleFormSubmit} from "../../utils/form.utils";
 
@@ -16,13 +16,15 @@ export const CreatePlayerForm: FC = () => {
                         <div className="field">
                             <label className="label">Vorname</label>
                             <div className="control">
-                                <input type="text" className="input" placeholder="Vorname" required onChange={e => setForeName(e.target.value)}/>
+                                <input type="text" className="input" placeholder="Vorname" required
+                                       onChange={e => setForeName(e.target.value)}/>
                             </div>
                         </div>
                         <div className="field">
                             <label className="label">Nachname</label>
                             <div className="control">
-                                <input type="text" className="input" placeholder="Nachname" required onChange={e => setSurName(e.target.value)}/>
+                                <input type="text" className="input" placeholder="Nachname" required
+                                       onChange={e => setSurName(e.target.value)}/>
                             </div>
                         </div>
                         <div className="field has-text-centered">
