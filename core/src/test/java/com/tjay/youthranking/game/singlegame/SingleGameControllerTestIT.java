@@ -14,7 +14,7 @@ import java.util.UUID;
 import static io.restassured.RestAssured.given;
 
 @QuarkusTest
-public class SingleGameControllerTest {
+public class SingleGameControllerTestIT {
 
     @Inject
     private TestPlayerHelper testPlayerHelper;

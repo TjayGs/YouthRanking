@@ -9,11 +9,11 @@ import org.junit.jupiter.api.Test;
 import javax.inject.Inject;
 import java.time.LocalDate;
 
-import static com.tjay.youthranking.general.ErrorCodeConstants.ERROR_CODE_GAME_GOAL_COMBINATION_INVALID;
+import static com.tjay.youthranking.general.YouthRatingErrorCodes.GAME_GOAL_COMBINATION_INVALID;
 import static io.restassured.RestAssured.given;
 
 @QuarkusTest
-public class DoubleGameControllerTest {
+public class DoubleGameControllerTestIT {
 
     @Inject
     private TestPlayerHelper testPlayerHelper;
@@ -66,7 +66,7 @@ public class DoubleGameControllerTest {
             .when().post("/doubleGames")
         .then().statusCode(409).extract().body().path("messageErrorKey");
 
-        assert errorCode.equals(ERROR_CODE_GAME_GOAL_COMBINATION_INVALID);
+        assert errorCode.equals(GAME_GOAL_COMBINATION_INVALID.getErrorCode());
     }
 
     @Test
@@ -88,7 +88,7 @@ public class DoubleGameControllerTest {
         .when().post("/doubleGames")
         .then().statusCode(409).extract().body().path("messageErrorKey");
 
-        assert errorCode.equals(ERROR_CODE_GAME_GOAL_COMBINATION_INVALID);
+        assert errorCode.equals(GAME_GOAL_COMBINATION_INVALID.getErrorCode());
     }
 
     @Test

@@ -18,7 +18,7 @@ public class YouthExceptionMapper implements ExceptionMapper<YouthRatingExceptio
     public Response toResponse(YouthRatingException exception) {
         log.warn("A YouthRating exception happen", exception);
         Map<String, String> responseMap = new HashMap<>();
-        responseMap.put("messageErrorKey", exception.getErrorCode());
+        responseMap.put("messageErrorKey", exception.getYouthRatingErrorCode().getErrorCode());
         return Response.status(CONFLICT).entity(responseMap).build();
     }
 }

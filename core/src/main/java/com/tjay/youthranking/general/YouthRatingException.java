@@ -8,10 +8,10 @@ import lombok.Getter;
 @Getter
 public class YouthRatingException extends RuntimeException {
 
-    private final String errorCode;
+    private final YouthRatingErrorCodes youthRatingErrorCode;
 
-    public YouthRatingException(String msg, String errorCode) {
+    public YouthRatingException(String msg, YouthRatingErrorCodes youthRatingErrorCode) {
         super(msg);
-        this.errorCode = errorCode;
+        this.youthRatingErrorCode = youthRatingErrorCode;
     }
 }

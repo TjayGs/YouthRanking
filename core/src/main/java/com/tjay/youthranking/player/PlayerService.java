@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Optional;
 
-import static com.tjay.youthranking.general.ErrorCodeConstants.ERROR_CODE_FORENAME_AND_SURNAME_COMBINATION_NOT_UNIQUE;
-import static com.tjay.youthranking.general.ErrorCodeConstants.ERROR_CODE_FORENAME_OR_SURNAME_MUST_NOT_BE_EMPTY;
+import static com.tjay.youthranking.general.YouthRatingErrorCodes.FORENAME_AND_SURNAME_COMBINATION_NOT_UNIQUE;
+import static com.tjay.youthranking.general.YouthRatingErrorCodes.FORENAME_OR_SURNAME_MUST_NOT_BE_EMPTY;
 
 /**
  * This is the class which deals as only access to the db.
@@ -37,14 +37,14 @@ public class PlayerService {
         // foreName or surName must not be empty
         if (player.getForeName().isBlank() || player.getSurName().isBlank()) {
             throw new YouthRatingException("Forename or Surname must not be empty for given player: " + player,
-                    ERROR_CODE_FORENAME_OR_SURNAME_MUST_NOT_BE_EMPTY);
+                FORENAME_OR_SURNAME_MUST_NOT_BE_EMPTY);
         }
 
         // Combination for ForeName and SurName must not exists already
         Optional<Player> existingForeNameSurNamePlayer = playerRepository.findPlayerByForeNameAndSurName(player.getForeName().trim(), player.getSurName().trim());
         if (existingForeNameSurNamePlayer.isPresent()) {
             throw new YouthRatingException("There is already a player with the same forename and surname: " + existingForeNameSurNamePlayer.get(),
-                                           ERROR_CODE_FORENAME_AND_SURNAME_COMBINATION_NOT_UNIQUE);
+                FORENAME_AND_SURNAME_COMBINATION_NOT_UNIQUE);
         }
     }
 
