@@ -21,12 +21,12 @@ import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 @Path("/doubleGames")
 public class DoubleGameController {
 
-    private final DoubleGameRepository doubleGameRepository;
+    private final DoubleGameService doubleGameService;
 
     @POST
     @Produces(APPLICATION_JSON)
     public Response createDoubleGame(DoubleGame incomingDoubleGame) {
-        DoubleGame createdDoubleGame = doubleGameRepository.createDoubleGame(incomingDoubleGame);
+        DoubleGame createdDoubleGame = doubleGameService.saveDoubleGame(incomingDoubleGame);
         log.info("Created new DoubleGame {}", createdDoubleGame);
         return Response.ok(createdDoubleGame).build();
     }
@@ -35,7 +35,7 @@ public class DoubleGameController {
     @Path("/{id}")
     @Produces(APPLICATION_JSON)
     public Response getDoubleGameById(@PathParam("id") String id) {
-        Optional<DoubleGame> doubleGameOptional = doubleGameRepository.findDoubleGameById(id);
+        Optional<DoubleGame> doubleGameOptional = doubleGameService.findDoubleGameById(id);
         if (doubleGameOptional.isPresent()) {
             log.info("Returning DoubleGame {} for id {}", doubleGameOptional.get(), id);
             return Response.ok(doubleGameOptional.get()).build();

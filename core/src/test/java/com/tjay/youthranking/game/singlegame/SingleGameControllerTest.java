@@ -1,11 +1,13 @@
 package com.tjay.youthranking.game.singlegame;
 
+import com.tjay.youthranking.game.testhelper.TestPlayerHelper;
 import com.tjay.youthranking.player.Player;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.Test;
 
+import javax.inject.Inject;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -14,9 +16,12 @@ import static io.restassured.RestAssured.given;
 @QuarkusTest
 public class SingleGameControllerTest {
 
+    @Inject
+    private TestPlayerHelper testPlayerHelper;
+
     @Test
     public void testCreatingSingleGameHappyPath() {
-        Player randomPlayer = createPlayer();
+        Player randomPlayer = testPlayerHelper.createPlayer();
         SingleGame singleGame = SingleGame.builder().blueTeamPlayerId(randomPlayer.getId()).redTeamPlayerId(randomPlayer.getId()).blueTeamGoals(6).redTeamGoals(6).build();
         SingleGame createdSingleGame = given()
         .body(singleGame)
@@ -34,7 +39,7 @@ public class SingleGameControllerTest {
 
     @Test
     public void testCreatingSingleGameWithRedWin() {
-        Player randomPlayer = createPlayer();
+        Player randomPlayer = testPlayerHelper.createPlayer();
         SingleGame singleGame = SingleGame.builder().blueTeamPlayerId(randomPlayer.getId()).redTeamPlayerId(randomPlayer.getId()).blueTeamGoals(0).redTeamGoals(7).build();
         SingleGame createdSingleGame = given()
         .body(singleGame)
@@ -52,7 +57,7 @@ public class SingleGameControllerTest {
 
     @Test
     public void testCreatingSingleGameWithBlueWin() {
-        Player randomPlayer = createPlayer();
+        Player randomPlayer = testPlayerHelper.createPlayer();
         SingleGame singleGame = SingleGame.builder().blueTeamPlayerId(randomPlayer.getId()).redTeamPlayerId(randomPlayer.getId()).blueTeamGoals(7).redTeamGoals(5).build();
         SingleGame createdSingleGame = given()
         .body(singleGame)
@@ -82,7 +87,7 @@ public class SingleGameControllerTest {
 
     @Test
     public void testSingleGameMoreThanEightGoalsNotAllowed() {
-        Player randomPlayer = createPlayer();
+        Player randomPlayer = testPlayerHelper.createPlayer();
         SingleGame singleGame = SingleGame.builder().blueTeamPlayerId(randomPlayer.getId()).redTeamPlayerId(randomPlayer.getId()).blueTeamGoals(8).redTeamGoals(5).build();
         String messageErrorKey = given()
         .body(singleGame)
@@ -91,15 +96,5 @@ public class SingleGameControllerTest {
         .then().statusCode(409).extract().body().jsonPath().get("messageErrorKey");
 
         assert messageErrorKey.equals("0003");
-    }
-
-    private Player createPlayer() {
-        Player player = Player.builder().foreName(UUID.randomUUID().toString()).surName(UUID.randomUUID().toString()).build();
-        return given()
-        .contentType(ContentType.JSON)
-        .body(player)
-        .when()
-        .post("/players")
-        .thenReturn().body().as(Player.class);
     }
 }

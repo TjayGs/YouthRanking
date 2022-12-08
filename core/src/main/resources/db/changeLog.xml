@@ -34,4 +34,27 @@
         <column name="playedAt" type="DATE"/>
         </createTable>
     </changeSet>
+
+    <changeSet author="Tjay" id="create-initial-doublegame-table">
+        <createTable tableName="DOUBLEGAME">
+            <column name="ID" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="blueTeamPlayerIdOne" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="blueTeamPlayerIdTwo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="redTeamPlayerIdOne" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="redTeamPlayerIdTwo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="blueTeamGoals" type="INTEGER"/>
+            <column name="redTeamGoals" type="INTEGER"/>
+            <column name="playedAt" type="DATE"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

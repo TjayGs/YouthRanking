@@ -8,12 +8,15 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+import javax.persistence.Entity;
+
 @SuperBuilder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+@Entity
 public class DoubleGame extends Game {
     private String redTeamPlayerIdOne;
     private String redTeamPlayerIdTwo;
